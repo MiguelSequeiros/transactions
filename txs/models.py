@@ -29,8 +29,8 @@ class Company(models.Model):
 
     @property
     def best_day(self):
-        return self.transactions.all().annotate(day=TruncDate('date')).values(
-            'day').annotate(f=Count('id')).values('day', 'f').order_by('-f')[0]
+        txs_with_date = self.transactions.all().annotate(day=TruncDate('date')).values('day')
+        return txs_with_date.annotate(f=Count('id')).values('day', 'f').order_by('-f')[0]
 
 
 def get_real_price(price):

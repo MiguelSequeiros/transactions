@@ -16,3 +16,8 @@ class AbstractSerializer(serializers.Serializer):
     charged_amount = serializers.DecimalField(max_digits=10, decimal_places=2)
     uncharged_amount = serializers.DecimalField(max_digits=10, decimal_places=2)
 
+
+class MonthAbstractSerializer(serializers.Serializer):
+    last_month_txs_charged = serializers.DecimalField(max_digits=10, decimal_places=2)
+    past_month_txs_charged = serializers.DecimalField(max_digits=10, decimal_places=2)
+    txs_charged_variation = serializers.DecimalField(max_digits=10, decimal_places=2)
